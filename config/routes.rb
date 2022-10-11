@@ -3,12 +3,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "posts#index"
 
-  resources :users do
-    resources :posts do
-      resources :comments
-    end
-  end
-
+  resources :users
   resources :posts
   resources :comments
 end
