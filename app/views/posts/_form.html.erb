@@ -1,13 +1,13 @@
 <%= form_with model: @post do |form| %>
-    <p>
+    <div>
         <%= form.label :body %><br>
         <%= form.text_area :body %>
-    </p>
-    <p>
+    </div>
+    <div>
         <%= form.label :name %><br>
         <%= form.text_field :name %>
-    </p>
-    <p>
+    </div>
+    <div>
         <%= form.submit %>
-    </p>
+    </div>
 <% end %>

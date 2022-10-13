@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @post = Post.new
   end
 
   def show
@@ -13,8 +14,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    id = User.find(params[:name])
-    @post = Post.new(body: params[:body], likes: 0, user_id: id)
+    @post = Post.new(body: params[:post][:body], likes: 0, name: params[:post][:name])
 
     if @post.save
       redirect_to @post
@@ -44,8 +44,8 @@ class PostsController < ApplicationController
     redirect_to posts_path, status: :see_other
   end
 
-  private
-    def post_params
-      params.require(:post).permit(:body, :user_id)
-    end
+  # private
+  #   def post_params
+  #     params.require(:post).permit(:body, :name)
+  #   end
 end
