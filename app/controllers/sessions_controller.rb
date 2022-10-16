@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(name: params[:session][:name].downcase)
     if user
+      current_user
       log_in user
       redirect_to user
     else
