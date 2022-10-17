@@ -14,8 +14,10 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
+        post = Post.new(body: "This is my first post!", likes: 0, name: @user.name)
 
         if @user.save
+            post.save
             log_in @user
             redirect_to @user
         else
