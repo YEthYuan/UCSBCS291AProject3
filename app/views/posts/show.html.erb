@@ -5,7 +5,8 @@ Modified at <%= @post.updated_at %>, pid: <%= @post.id %><br>
 <h2>Contents</h2>
 <p><%= @post.body %></p>
 
-<h2>New Comment</h2>
-<%= link_to "Create New Comment", new_comment_path %>
-
 <h2>Comments</h2>
+<%= render @post.comments %>
+
+<h2>New Comment</h2>
+<%= render 'comments/form' %>
