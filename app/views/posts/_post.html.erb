@@ -1,6 +1,6 @@
 <p>
     <strong>Author:</strong>
-    <%= post.name %>
+    <%= link_to post.name, User.find_by(name: post.name) %>
     <strong>Posted at:</strong>
     <%= post.created_at %>
 </p>
