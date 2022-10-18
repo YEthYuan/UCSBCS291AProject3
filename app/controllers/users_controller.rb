@@ -15,12 +15,16 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params)
         post = Post.new(body: "This is my first post!", likes: 0, name: @user.name)
+        session[:user_id] = @user.id
 
         if @user.save
             post.save
+            current_user
             log_in @user
+            flash[:notice] = "Account created successfully!"
             redirect_to @user
         else
+            flash.now.alert = "Oops, couldn't create account. Please make sure you are using a valid email and password and try again."
             render :new, status: :unprocessable_entity
         end
     end
@@ -48,6 +52,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:name, :passwd, :about)
+        params.require(:user).permit(:name, :password, :about)
     end
 end
