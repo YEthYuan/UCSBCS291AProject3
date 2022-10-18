@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(name: params[:session][:name])
+    # TODO: When switch to another user, session should change
     if user
       current_user
       log_in user
