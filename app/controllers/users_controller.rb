@@ -24,7 +24,7 @@ class UsersController < ApplicationController
             flash[:notice] = "Account created successfully!"
             redirect_to @user
         else
-            flash.now.alert = "Oops, couldn't create account. Please make sure you are using a valid email and password and try again."
+            flash[:notice] = "Oops, couldn't create account. Please make sure you are using a valid name and password and try again."
             render :new, status: :unprocessable_entity
         end
     end
