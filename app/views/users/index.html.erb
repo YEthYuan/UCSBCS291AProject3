@@ -9,7 +9,8 @@ Our twitter has <%= User.count %> users!
     <% @users.each do |user| %>
         <li>
             <%= link_to user.name, user %><br>
-            <%= user.about %>
+            <%= user.about %><br>
+          <%= render Post.where(name: user.name) %>
         </li>
     <% end %>
 </ul>
